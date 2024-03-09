@@ -28,6 +28,7 @@
     "mocha": "^10.2.0",
     "mysql2": "^3.6.3",
     "parse-database-url": "^0.3.0",
+    "pg": "^8.11.3",
     "qrcode": "^1.5.3",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.3.3",

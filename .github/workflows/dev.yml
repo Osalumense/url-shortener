@@ -36,7 +36,6 @@ jobs:
           DB_NAME=${{ secrets.DB_NAME }}
           CLIENT="mysql"
           NODE_VERSION=18.18.2
-          PAYSTACK_SECRET_KEY=${{ secrets.PAYSTACK_SECRET_KEY }}
           EOF
       - name: Install dependencies on app
         run: yarn install --only=prod

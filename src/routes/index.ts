@@ -4,7 +4,7 @@ import UrlsController from "../controllers/Urls.controller";
 const router = express.Router()
 
 router.get("/", (req: Request, res: Response) => {
-	res.send({ message: "Welcome to  Assessment API" });
+	res.send({ message: "Welcome to URL shortener API" });
   });
 router.get(`/healthcheck`, (req: Request, res: Response) => {
 	try {

@@ -1,0 +1,49 @@
+name: Lendsqr assessment Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-main:
+    name: Deploy lendsqr assessment to main
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - name: Install Render CLI
+        run: |
+         curl -O https://render.com/download/render_linux
+         chmod +x render_linux
+         sudo mv render_linux /usr/local/bin/render
+      - name: Create env for App
+        run: |
+          cat > .env << EOF
+          NODE_ENV=production
+          DEBUG=*
+          SECRET_KEY=${{ secrets.SECRET_KEY }}
+          JWT_EXPIRES="1d"
+          PORT=4000
+          API_PREFIX="api/v1"
+          DB_USER=${{ secrets.DB_USER }}
+          DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+          DB_HOST=${{ secrets.DB_HOST }}
+          DB_PORT=${{ secrets.DB_PORT }}
+          DB_NAME=${{ secrets.DB_NAME }}
+          CLIENT="mysql"
+          NODE_VERSION=18.18.2
+          PAYSTACK_SECRET_KEY=${{ secrets.PAYSTACK_SECRET_KEY }}
+          EOF
+      - name: Install dependencies on app
+        run: yarn install --only=prod
+      - name: Build ts files
+        run: yarn run build
+      - name: Run migration
+        run: yarn migrate
+      - name: Run seed
+        run: yarn seed
+

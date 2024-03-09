@@ -41,6 +41,4 @@ jobs:
         run: yarn run build
       - name: Run migration
         run: yarn migrate
-      - name: Run seed
-        run: yarn seed
 

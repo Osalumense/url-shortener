@@ -3,8 +3,6 @@
 ## Description
 An API service to shorten URLs
 
-## Endpoints
-This application has two endpoints:
 
 ## Shorten a URL
 
@@ -40,11 +38,23 @@ This application has two endpoints:
 
 ### Request
 
-`GET /:short_id`
+`GET /ultjsllo`
 
 ### Response
 
-```
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "Url gotten successfully",
+    "message": {
+        "id": 1,
+        "short_id": "ultjsllo",
+        "original_url": "https://google.com",
+        "created_at": "2024-03-10T07:49:13.000Z",
+        "updated_at": "2024-03-10T07:49:13.000Z"
+    }
+}
 
 ```
 
@@ -54,7 +64,7 @@ This application has two endpoints:
 
 
 ##### Postman Documentation Link
-_[Postman Documentation]()_
+_[Postman Documentation](https://documenter.getpostman.com/view/17952060/2sA2xh3DW6)_
 
 
 ##### Running the project in your local machine

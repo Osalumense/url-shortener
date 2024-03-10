@@ -29,7 +29,7 @@ class UrlService implements IUrlService {
                 original_url: url,
             };
             const addUrl = await UrlQueries.addUrl(createUrlPayload);
-            return successResponse(201, "URL shortened successfully", addUrl)
+            return successResponse(201, addUrl, "URL shortened successfully", )
         } catch (error) {
             return errorResponse(500, error, `An error occurred while processing request: ${error.message}`)
         }
@@ -39,7 +39,7 @@ class UrlService implements IUrlService {
         try {
             const shortId = req.params.id;
             const url = await UrlQueries.getUrlBySlug(shortId);
-            return successResponse(200, "Url gotten successfully", url)
+            return successResponse(200, url, "Url gotten successfully")
         } catch (error) {
             return errorResponse(500, error, `An error occurred while processing request: ${error.message}`)
         }

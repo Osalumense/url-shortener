@@ -23,7 +23,7 @@ class UrlService implements IUrlService {
             };
             const byteLength = Math.ceil(20 * 0.75);
             const randomBytes = CryptoJS.lib.WordArray.random(byteLength);
-            const shortUuid = randomBytes.toString(CryptoJS.enc.Base64).slice(0, 20);     
+            const shortUuid = randomBytes.toString(CryptoJS.enc.Base64).slice(0, 7);     
             const createUrlPayload = {
                 short_id: slug || shortUuid,
                 original_url: url,
